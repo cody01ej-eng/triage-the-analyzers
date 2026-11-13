@@ -19,11 +19,15 @@ public class DocumentTemplate {
     }
 
     public List<SectionTemplate> getSections() {
-        return sections;
+        List<SectionTemplate> snapshot = sections;
+        if (snapshot != null) {
+            snapshot = new ArrayList<>(snapshot);
+        }
+        return snapshot;
     }
 
     public void setSections(List<SectionTemplate> sections) {
-        this.sections = sections;
+        this.sections = sections == null ? null : new ArrayList<>(sections);
     }
 
     public static class SectionTemplate {

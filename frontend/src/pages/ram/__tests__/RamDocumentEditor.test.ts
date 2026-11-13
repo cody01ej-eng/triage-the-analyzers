@@ -57,8 +57,10 @@ beforeEach(async () => {
       id: 1,
       teamId: 1,
       type: 'SRS',
+      documentKey: 'SRS-1',
       title: 'Software requirements',
       status: 'DRAFT',
+      version: 0,
       sections: [section('<p>Original content</p>')]
     }
   })

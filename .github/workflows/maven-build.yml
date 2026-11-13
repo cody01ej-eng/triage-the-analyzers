@@ -45,6 +45,9 @@ jobs:
       - name: Install dependencies
         working-directory: ./frontend
         run: npm ci
+      - name: Editor regression tests
+        working-directory: ./frontend
+        run: npm test
       # Report only for now: none of the three passes on main yet (ESLint 130 problems, vue-tsc 18 errors,
       # Prettier 75 files). Each step becomes blocking once its findings are baselined or fixed.
       - name: ESLint (report only)
