@@ -1,5 +1,6 @@
 package team.projectpulse.evaluation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PeerEvaluationAverage {
@@ -16,8 +17,6 @@ public class PeerEvaluationAverage {
     private List<RatingAverage> ratingAverages;
 
 
-    public PeerEvaluationAverage() {
-    }
 
     public Integer getStudentId() {
         return studentId;
@@ -76,27 +75,39 @@ public class PeerEvaluationAverage {
     }
 
     public List<String> getPublicComments() {
-        return publicComments;
+        List<String> snapshot = publicComments;
+        if (snapshot != null) {
+            snapshot = new ArrayList<>(snapshot);
+        }
+        return snapshot;
     }
 
     public void setPublicComments(List<String> publicComments) {
-        this.publicComments = publicComments;
+        this.publicComments = publicComments == null ? null : new ArrayList<>(publicComments);
     }
 
     public List<String> getPrivateComments() {
-        return privateComments;
+        List<String> snapshot = privateComments;
+        if (snapshot != null) {
+            snapshot = new ArrayList<>(snapshot);
+        }
+        return snapshot;
     }
 
     public void setPrivateComments(List<String> privateComments) {
-        this.privateComments = privateComments;
+        this.privateComments = privateComments == null ? null : new ArrayList<>(privateComments);
     }
 
     public List<RatingAverage> getRatingAverages() {
-        return ratingAverages;
+        List<RatingAverage> snapshot = ratingAverages;
+        if (snapshot != null) {
+            snapshot = new ArrayList<>(snapshot);
+        }
+        return snapshot;
     }
 
     public void setRatingAverages(List<RatingAverage> ratingAverages) {
-        this.ratingAverages = ratingAverages;
+        this.ratingAverages = ratingAverages == null ? null : new ArrayList<>(ratingAverages);
     }
 
 }

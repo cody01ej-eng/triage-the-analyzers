@@ -7,4 +7,23 @@
 
      Unlike the baseline, this file may grow, but every entry is a reviewed decision. -->
 <FindBugsFilter>
+    <!-- D1: JPA entities deliberately share managed associations and Hibernate collections.
+         Existing helpers maintain both sides of those relationships; copying every getter
+         would detach callers from that graph. This applies only to @Entity classes, not DTOs. -->
+    <Match>
+        <Annotation name="jakarta.persistence.Entity"/>
+        <Bug pattern="EI_EXPOSE_REP,EI_EXPOSE_REP2"/>
+    </Match>
+    <!-- D1: Spring constructor injection retains the container's service/repository instance,
+         including its proxy identity. Only constructors of these directly annotated beans
+         are exempt; their getters and ordinary DTO collections remain checked. -->
+    <Match>
+        <Or>
+            <Annotation name="org.springframework.stereotype.Service"/>
+            <Annotation name="org.springframework.stereotype.Component"/>
+            <Annotation name="org.springframework.web.bind.annotation.RestController"/>
+        </Or>
+        <Method name="&lt;init&gt;"/>
+        <Bug pattern="EI_EXPOSE_REP2"/>
+    </Match>
 </FindBugsFilter>

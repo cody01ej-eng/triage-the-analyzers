@@ -16,6 +16,7 @@ public class Result {
 
 
     public Result() {
+        // Required for bean-style construction alongside the parameterized constructors.
     }
 
     public Result(boolean flag, Integer code, String message) {

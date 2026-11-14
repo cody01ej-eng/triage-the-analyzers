@@ -10,8 +10,6 @@ public class WeeklyPeerEvaluationReport {
     private List<PeerEvaluationAverage> peerEvaluationAverages = new ArrayList<>();
 
 
-    public WeeklyPeerEvaluationReport() {
-    }
 
     public String getSectionName() {
         return sectionName;
@@ -30,11 +28,15 @@ public class WeeklyPeerEvaluationReport {
     }
 
     public List<PeerEvaluationAverage> getPeerEvaluationAverages() {
-        return peerEvaluationAverages;
+        List<PeerEvaluationAverage> snapshot = peerEvaluationAverages;
+        if (snapshot != null) {
+            snapshot = new ArrayList<>(snapshot);
+        }
+        return snapshot;
     }
 
     public void setPeerEvaluationAverages(List<PeerEvaluationAverage> peerEvaluationAverages) {
-        this.peerEvaluationAverages = peerEvaluationAverages;
+        this.peerEvaluationAverages = peerEvaluationAverages == null ? null : new ArrayList<>(peerEvaluationAverages);
     }
 
 }
